@@ -9,6 +9,8 @@ INCLUDE	=	-Iinclude
 
 CFLAGS	= -g -Wall -Werror $(INCLUDE)
 
+CC		= g++
+
 all:	${OBJ}
 	${CC} -o ${BINARY} ${OBJ}
 

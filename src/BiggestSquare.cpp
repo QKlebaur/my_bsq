@@ -7,10 +7,15 @@
 
 #include "BiggestSquare.hpp"
 
-BiggestSquare::BiggestSquare()
+BiggestSquare::BiggestSquare(std::string const &filePath) : _filePath(filePath)
 {
 }
 
 BiggestSquare::~BiggestSquare()
 {
+}
+
+void BiggestSquare::run()
+{
+    _mapParser.fillMap(_map, _filePath);
 }

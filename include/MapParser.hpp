@@ -8,12 +8,15 @@
 #ifndef MAPPARSER_HPP_
 #define MAPPARSER_HPP_
 
+#include <string>
+#include <vector>
+
 class MapParser {
     public:
         MapParser();
         ~MapParser();
 
-    protected:
+        void fillMap(std::vector<std::vector<unsigned int>> &, std::string const &);
     private:
 };
 

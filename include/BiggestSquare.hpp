@@ -8,12 +8,22 @@
 #ifndef BIGGESTSQUARE_HPP_
 #define BIGGESTSQUARE_HPP_
 
+#include "MapParser.hpp"
+
+#include <vector>
+#include <string>
+
 class BiggestSquare {
     public:
-        BiggestSquare();
+        BiggestSquare(std::string const &);
         ~BiggestSquare();
 
+        void run();
+
     private:
+        std::vector<std::vector<unsigned int>> _map;
+        MapParser _mapParser;
+        std::string const _filePath;
 };
 
 #endif /* !BIGGESTSQUARE_HPP_ */
