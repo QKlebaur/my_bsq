@@ -8,6 +8,7 @@
 #include "MapParser.hpp"
 
 #include <fstream>
+#include <iostream>
 
 MapParser::MapParser()
 {
@@ -17,30 +18,33 @@ MapParser::~MapParser()
 {
 }
 
-void fillMap(std::vector<std::vector<unsigned int>> &map, std::string const &filePath)
+void MapParser::fillMap(std::vector<std::vector<unsigned int>> &map, std::string const &filePath, unsigned int &mapSize)
 {
     std::ifstream file(filePath);
     std::string line;
-    int indexX = 0;
-    int indexY = 0;
-    int size = 0;
+    unsigned int indexX = 0;
+    unsigned int indexY = 0;
+    char c;
 
     std::getline(file, line);
-    size = std::atoi(line.c_str());
-    map.insert(map.begin(), size, {});
-    map[indexY].insert(map[indexY].begin(), size, {});
+    mapSize = std::atoi(line.c_str());
+    map.insert(map.begin(), mapSize, {});
+    map[indexY].insert(map[indexY].begin(), mapSize, {});
 
     while (file)
     {
-        char c = file.get();
-        if (c == '.')
+        c = file.get();
+        if (c == '.') {
             map[indexY][indexX] = 1;
-        else if (c == 'o')
+        }
+        else if (c == 'o') {
             map[indexY][indexX] = 0;
+        }
         else if (c == '\n') {
             ++indexY;
-            map[indexY].insert(map[indexY].begin(), size, {});
-            indexX = 0;
+            if (indexY < mapSize)
+                map[indexY].insert(map[indexY].begin(), mapSize, {});
+            indexX = -1;
         }
         ++indexX;
     }

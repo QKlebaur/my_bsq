@@ -16,7 +16,7 @@ class MapParser {
         MapParser();
         ~MapParser();
 
-        void fillMap(std::vector<std::vector<unsigned int>> &, std::string const &);
+        void fillMap(std::vector<std::vector<unsigned int>> &, std::string const &, unsigned int &);
     private:
 };
 
